@@ -3,35 +3,11 @@ import java.util.Scanner;
 
 public class Partie {
 	
-	private Joueur attaquant;
-	private Joueur victime;
-	private Ocean ocean;
+	Joueur attaquant;
+	Joueur victime;
+	Ocean ocean;
 	
 	
-	public Joueur getAttaquant() {
-		return attaquant;
-	}
-
-	public void setAttaquant(Joueur attaquant) {
-		this.attaquant = attaquant;
-	}
-
-	public Joueur getVictime() {
-		return victime;
-	}
-
-	public void setVictime(Joueur victime) {
-		this.victime = victime;
-	}
-
-	public Ocean getOcean() {
-		return ocean;
-	}
-
-	public void setOcean(Ocean ocean) {
-		this.ocean = ocean;
-	}
-
 	public Partie()
 	{
 		this.attaquant = new Joueur();
@@ -52,16 +28,16 @@ public class Partie {
 		for(int i=0; i<4; i++)
 		{
 			
-			System.out.println(j.getPseudo() + ": Vous allez placer vos bateaux");
-			System.out.println("votre bateau de taille " + j.getBateau(i).getTaille() + " doit etre placer");
-			System.out.println("Voulez vous placer ce bateau ï¿½ l'horizontale ou ï¿½ la verticale?");
+			System.out.println(j.pseudo + ": Vous allez placer vos bateaux");
+			System.out.println("votre bateau de taille " + j.bateau[i].taille + " doit etre placer");
+			System.out.println("Voulez vous placer ce bateau à l'horizontale ou à la verticale?");
 			do{
 			System.out.println("Entrez 'H' pour horizontale ou 'V' pour verticale");
 			choix= scanner.next();
 			c = choix.charAt(0);
 			}while(c != 'h' && c != 'H' & c != 'V' && c != 'v' );
 			
-			System.out.println("Choisissez maintenant ï¿½ quelle ligne et quelle colonne le bateau doit commencer");
+			System.out.println("Choisissez maintenant à quelle ligne et quelle colonne le bateau doit commencer");
 			if(c == 'h' || c == 'H')
 			{
 			do{
@@ -71,7 +47,7 @@ public class Partie {
 				System.out.println("Colonne (entre 1 et 5): ");
 				colonne=scanner.nextInt();
 				
-		   	}while(ligne < 1 || colonne < 1 || ligne > 5 || colonne > 5 || (colonne-1)+(j.getBateau(i).getTaille()) > 5);
+		   	}while(ligne < 1 || colonne < 1 || ligne > 5 || colonne > 5 || (colonne-1)+(j.bateau[i].taille) > 5);
 			
 			}else
 			{
@@ -82,14 +58,14 @@ public class Partie {
 					System.out.println("Colonne (entre 1 et 5): ");
 					colonne=scanner.nextInt();
 					
-			   	}while(ligne < 1 || colonne < 1 || ligne > 5 || colonne > 5 || ligne+(j.getBateau(i).getTaille()) > 5);
+			   	}while(ligne < 1 || colonne < 1 || ligne > 5 || colonne > 5 || ligne+(j.bateau[i].taille) > 5);
 			}
 			
 			x=0;
 			
 				if(c == 'h' || c =='H')
 				{
-					while(x < j.getBateau(i).getTaille())
+					while(x < j.bateau[i].taille)
 					{
 						ocean.plateau[5*(ligne-1)+(colonne-1+x)]=1;
 						x++;
@@ -97,7 +73,7 @@ public class Partie {
 				}
 				else
 				{
-					while(x < j.getBateau(i).getTaille())
+					while(x < j.bateau[i].taille)
 					{
 						ocean.plateau[5*(ligne-1+x)+(colonne-1)]=1;
 						x++;
@@ -117,15 +93,15 @@ public class Partie {
 	public void lancerBombeS(Joueur j)
 	{
 		
-		System.out.println("Il est temps de passer ï¿½ l'attaque pour " + j.getPseudo());
+		System.out.println("Il est temps de passer à l'attaque pour " + j.pseudo);
 		
 		
-		while(j.getBombe()>0)
+		while(j.bombe>0)
 		{
 			
 			lancerUneBombe(j);
-			j.setBombe(j.getBombe()-1);
-			System.out.println("Il vous reste " + j.getBombe() + " bombes" );
+			j.bombe--;
+			System.out.println("Il vous reste " + j.bombe + " bombes" );
 			ocean.verifierSiFin(attaquant, victime);
 			ocean.voirTerrain();
 
@@ -155,23 +131,23 @@ public class Partie {
 		
 		if(ocean.plateau[5*(ligne-1)+(colonne-1)]==1)
 		{
-			System.out.println("Touchï¿½ !");
+			System.out.println("Touché !");
 			ocean.plateau[5*(ligne-1)+(colonne-1)] = -2;
 		}
 		
 		else if(ocean.plateau[5*(ligne-1)+(colonne-1)]==0)
 		{
-			System.out.println("Ratï¿½!");
+			System.out.println("Raté!");
 			ocean.plateau[5*(ligne-1)+(colonne-1)] = -1;
 		}
 		
 		else if(ocean.plateau[5*(ligne-1)+(colonne-1)]==-2)
 		{
-			System.out.println("Cible dï¿½jï¿½ touchï¿½e ... vous perdez votre bombe");
+			System.out.println("Cible déjà touchée ... vous perdez votre bombe");
 		}
 		else
 		{
-			System.out.println("Ratï¿½!");
+			System.out.println("Raté!");
 		}
 	}
 	

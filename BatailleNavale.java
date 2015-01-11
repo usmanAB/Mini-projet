@@ -7,9 +7,9 @@ public class BatailleNavale {
 		Partie partie;
 		partie = new Partie();
 		
-		partie.placerBateau(partie.getVictime());
+		partie.placerBateau(partie.victime);
 		
-		partie.lancerBombeS(partie.getAttaquant());
+		partie.lancerBombeS(partie.attaquant);
 		
 		
 		
