@@ -39,7 +39,7 @@ public class Ocean {
 		}
 		else
 		{
-			System.out.print("     Touchï¿½!    |");
+			System.out.print("     Touché!    |");
 		}
 	}
 		
@@ -51,11 +51,11 @@ public class Ocean {
 		}
 		else if(this.plateau[i]==-1)
 		{
-			System.out.print("    coup ratï¿½   |");
+			System.out.print("    coup raté   |");
 		}
 		else if(this.plateau[i]==-2)
 		{
-			System.out.print("   coup rï¿½ussi  |");
+			System.out.print("   coup réussi  |");
 		}
 		else
 		{
@@ -147,18 +147,18 @@ public class Ocean {
 		
 		if(x==0)
 		{
-			System.out.println("Vous avez coulï¿½ tout les bateaux ! ");
-			System.out.println(attaque.getPseudo() + " gagne !!");
+			System.out.println("Vous avez coulé tout les bateaux ! ");
+			System.out.println(attaque.pseudo + " gagne !!");
 		}
 		else
 		{
-			System.out.println("Il vous reste " + x + " cases ï¿½ toucher");
+			System.out.println("Il vous reste " + x + " cases à toucher");
 		}
 		
-		if(attaque.getBombe()==0)
+		if(attaque.bombe==0)
 		{
-			System.out.println(attaque.getPseudo() + " n'a plus de bombe");
-			System.out.println(def.getPseudo() + " gagne!!");
+			System.out.println(attaque.pseudo + " n'a plus de bombe");
+			System.out.println(def.pseudo + " gagne!!");
 		}
 			
 	}

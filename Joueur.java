@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Joueur {
 	
-	 String pseudo;
-	 int bombe;
-	 Bateau[] bateau;
+	String pseudo;
+	int bombe;
+	Bateau[] bateau;
 	
 	
 	public Joueur()
@@ -26,36 +26,6 @@ public class Joueur {
 		{
 			this.bateau[i] = new Bateau(i+1);
 		}
-	}
-
-
-	public String getPseudo() {
-		return pseudo;
-	}
-
-
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
-	}
-
-
-	public int getBombe() {
-		return bombe;
-	}
-
-
-	public void setBombe(int bombe) {
-		this.bombe = bombe;
-	}
-
-
-	public Bateau getBateau(int i) {
-		return bateau[i];
-	}
-
-
-	public void setBateau(Bateau[] bateau) {
-		this.bateau = bateau;
 	}
 
 	
